@@ -1,0 +1,5 @@
+Towerdefence z wykorzystaniem fizyki
+
+Widok z góry, siatka 3d, w centrum baza do obronienia,  gracz musi łapać myszka przeciwników i uderzać ich o innych, przeciwnicy strzelają do centrum bazy a gracz na dodatkowy cube otoczenia którym może blokować drogę pociskom (przeciwnicy też się do tego nadają)
+
+Część przeciwników można wyrzucać poza mapę albo zrobić jakąś paszczę w którą można ich wrzucić i np odzyskać zdrowie
