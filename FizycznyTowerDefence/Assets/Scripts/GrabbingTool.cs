@@ -34,7 +34,7 @@ public class GrabbingTool : MonoBehaviour
             return;
         }
 
-        if(Input.GetMouseButton(0) && isGrabbing) // bardzo fajnie tylko to nie może być ruszane transformem bo kolizja nie działa
+        if(Input.GetMouseButton(0) && isGrabbing)
         {
             if(Physics.Raycast(ray, out hitInfo, 100, groundLayer))
             {
@@ -48,7 +48,7 @@ public class GrabbingTool : MonoBehaviour
             return;
         }
 
-        if(Input.GetMouseButtonUp(0) && isGrabbing)
+        if(Input.GetMouseButtonUp(0) && isGrabbing) // rzucanie w zależności od odległości myszki od obiektu?
         {
             grabbableObject.OnGrabExit();
             isGrabbing = false;

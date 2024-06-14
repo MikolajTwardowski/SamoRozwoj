@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Obstacle : MonoBehaviour, IGrabbable, IHoverable
 {
     bool dragging = false;
     Vector3 direction;
+    Rigidbody rb;
+
+    [SerializeField] float speed = 1f;
+    [SerializeField] float throwFactor = 1f;
 
     public void OnGrab()
     {
-        direction = Vector3 .zero;
+        //direction = Vector3 .zero;
     }
     public void OnGrab(Vector3 point)
     {
@@ -23,6 +28,7 @@ public class Obstacle : MonoBehaviour, IGrabbable, IHoverable
 
     public void OnGrabExit()
     {
+        rb.AddForce(direction * Vector3.Magnitude(direction) * throwFactor);
         dragging = false;
     }
 
@@ -39,7 +45,7 @@ public class Obstacle : MonoBehaviour, IGrabbable, IHoverable
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -47,7 +53,8 @@ public class Obstacle : MonoBehaviour, IGrabbable, IHoverable
     {
         if (dragging)
         {
-            transform.position += direction;
+            //transform.position += direction;
+            rb.velocity = direction * speed;
         }
     }
 }
