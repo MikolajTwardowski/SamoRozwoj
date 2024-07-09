@@ -29,7 +29,7 @@ public class GrabbingTool : MonoBehaviour
             {
                 grabbableObject.OnGrabEnter();
                 isGrabbing = true;
-                Debug.Log("GrabEnter");
+                //Debug.Log("GrabEnter");
             }
             return;
         }
@@ -39,11 +39,16 @@ public class GrabbingTool : MonoBehaviour
             if(Physics.Raycast(ray, out hitInfo, 100, groundLayer))
             {
                 grabbableObject.OnGrab(hitInfo.point + Vector3.up);
-                Debug.Log("OnGrab");
+                //Debug.Log("OnGrab");
             }
             else
             {
-                grabbableObject.OnGrab();
+                //Vector3 virtualPoint = camera.ScreenToWorldPoint(Input.mousePosition);
+                //virtualPoint.z = virtualPoint.y;
+                //virtualPoint.y = 1f;
+                //grabbableObject.OnGrab(virtualPoint);
+                //Debug.Log(Input.mousePosition + " mousePos");
+                //Debug.Log(virtualPoint + " VP");
             }
             return;
         }
@@ -52,7 +57,7 @@ public class GrabbingTool : MonoBehaviour
         {
             grabbableObject.OnGrabExit();
             isGrabbing = false;
-            Debug.Log("GrabExit");
+            //Debug.Log("GrabExit");
             return;
         }
 
@@ -64,9 +69,15 @@ public class GrabbingTool : MonoBehaviour
                 isHovering = true;
             }
         }
+        else if(Physics.Raycast(ray, out hitInfo, 100))
+        {
+            
+        }
+
         else if(!Physics.Raycast(ray, out hitInfo, 100) && isHovering) // jebie się przy przechodzeniu z hovera na hovera bo zmienia się obiekt hoverowania a boole się nie zmieniają
         {
-            hoverableObject.OnHoverExit();
+            if(hoverableObject != null)
+                hoverableObject.OnHoverExit();
             isHovering = false;
         }
 
